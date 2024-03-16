@@ -15,7 +15,7 @@ namespace System.Models
             Papers = new HashSet<Paper>();
         }
 
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public string UserName { get; set; } = null!;
         public string UserPassword { get; set; } = null!;
         public string? NewPassword { get; set; }

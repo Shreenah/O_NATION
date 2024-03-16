@@ -11,6 +11,9 @@ using System.Diagnostics.SymbolStore;
 using System.Runtime.InteropServices;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.DataTransferObject;
+using Microsoft.EntityFrameworkCore;
+using ontion.Models;
+using System.Repository;
 
 namespace System.Controllers
 {
@@ -22,11 +25,28 @@ namespace System.Controllers
         private readonly UserManager<User> _userManager;
         private readonly IMapper _mapper;
         private readonly IConfiguration _config;
-        public AccountController(UserManager<User> userManager, IMapper mapper, IConfiguration config)
+        private readonly O_NATIONContext _context;
+        private readonly SignInManager<User> _signInManager;
+
+        //public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
+        //{
+        //    _userManager = userManager;
+        //    _signInManager = signInManager;
+        //}
+
+        //public AccountController(O_NATIONContext context)
+        //{
+        //    _context = context;
+        //}
+       
+        public AccountController(UserManager<User> userManager, IMapper mapper, IConfiguration config, SignInManager<User> signInManager, O_NATIONContext context)
         {
+            _context = context;
+
             _userManager = userManager;
             _mapper = mapper;
             _config = config;
+           _signInManager = signInManager;
 
         }
         [HttpPost("register")]
@@ -95,6 +115,55 @@ namespace System.Controllers
             }
             return Unauthorized();//401
         }
+
+        //[ApiController]
+        //[Route("api/[controller]")]
+        //public class ProfileController : ControllerBase
+        //{
+        //    private readonly IProfileRepository _profileRepository;
+
+        //    public ProfileController(IProfileRepository profileRepository)
+        //    {
+        //        _profileRepository = p3rofileRepository;
+        //    }
+
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<User>> GetProfile(int id)
+        //{
+        //    var profile = await UserRepository.GetProfileById(id);
+        //    if (profile == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return profile;
+        //}
+
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> UpdateProfile(int id, UserProfile profile)
+        //{
+        //    if (id != profile.UserId)
+        //    {
+        //        return BadRequest();
+        //    }
+
+        //    var existingProfile = await UserRepository.GetProfileById(id);
+        //    if (existingProfile == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    existingProfile.UserName= profile.UserName;
+        //    existingProfile.UserEmails = profile.UserEmails;
+        //    existingProfile.UserPhones = profile.UserPhones;
+
+        //    // Update other fields as needed
+
+        //    await UserRepository.UpdateUser(existingProfile);
+        //    return NoContent();
+        //}
+       
     }
+
 }
+    
 

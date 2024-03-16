@@ -1,5 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Models;
+
+
+
+   
+        
 
 namespace System.Models
 {
@@ -18,6 +24,7 @@ namespace System.Models
             Users = new HashSet<User>();
         }
 
+       
         public int CountryId { get; set; }
         public string CountryName { get; set; } = null!;
         public string? CountryContinent { get; set; }
@@ -32,5 +39,8 @@ namespace System.Models
         public virtual ICollection<Favorite> Favorites { get; set; }
         public virtual ICollection<TouristicPlace> TouristicPlaces { get; set; }
         public virtual ICollection<User> Users { get; set; }
-    }
+
+      }
 }
+
+

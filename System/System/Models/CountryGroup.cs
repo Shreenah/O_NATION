@@ -10,5 +10,8 @@ namespace System.Models
         public string CountyName { get; set; } = null!;
 
         public virtual Country Country { get; set; } = null!;
+        Country country = new Country();
+
+          // Add more rows as needed 
     }
 }

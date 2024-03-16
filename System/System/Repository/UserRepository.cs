@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using ontion.Models;
 using System.Interface;
 using System.Models;
 
@@ -74,7 +76,7 @@ namespace System.Repository
             }
         }
 
-        public bool CheckUser(int id)
+        public bool CheckUser(string id)
         {
             return _dbContext.Users.Any(u => u.UserId == id);
         }
@@ -85,6 +87,21 @@ namespace System.Repository
         }
 
         public void UpdatUser(User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static Task<ActionResult<UserProfile>> GetProfileById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User GetUserDetails(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User DeleteUser(string id)
         {
             throw new NotImplementedException();
         }
